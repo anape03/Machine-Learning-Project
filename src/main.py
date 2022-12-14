@@ -14,12 +14,12 @@ def main():
     # Part B ---------------------------------
 
     print("[Logistic Regression...]")
-    resultsLogRegr(xdata, ydata)
+    resultsLogRegr(xdata, ydata, round_dec=4)
 
     print("-"* 30)
 
     print("[Logistic Regression using L2 regularization...]")
-    resultsLogRegrL2(xdata, ydata)
+    resultsLogRegrL2(xdata, ydata, round_dec=4)
 
     # Part C ---------------------------------
 

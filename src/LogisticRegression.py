@@ -130,7 +130,7 @@ def accuracyResults(x_train, y_train, x_test, y_test, i=100, _lambda=0.0):
 
     return model, theta
 
-def printAccuracy(xdata, ydata, model, theta, iter, _lambda=0.0):
+def printAccuracy(xdata, ydata, model, theta, iter, _lambda=0.0, round_dec = None):
     x_train, x_test, x_val = [data for data in xdata]
     y_train, y_test, y_val = [data for data in ydata]
 
@@ -138,23 +138,32 @@ def printAccuracy(xdata, ydata, model, theta, iter, _lambda=0.0):
     p_test, prob_test = model.predict(theta, x_test)
     print("-"*10)
     print("For",iter,"iterations ( lambda = ",_lambda,"):")
-    print("Accuracy of training set:", accuracy(p_train.astype('int'), y_train, 2))
-    print("Accuracy of testing set:", accuracy(p_test.astype('int'), y_test, 2))
+    # print("Accuracy of training set:", accuracy(p_train.astype('int'), y_train, round_dec))
+    print("Accuracy of testing set:", accuracy(p_test.astype('int'), y_test, round_dec))
 
-def resultsLogRegr(xdata, ydata):
+def resultsLogRegr(xdata, ydata, round_dec = None):
     """
     Creates results for Logistic Regression with no Regularization
+    Args:
+        xdata     : static array containing x_train, x_test, x_val
+        ydata     : static array containing y_train, y_test, y_val
+        round_dec : number of decimals to round results to, in print
     """
     x_train, x_test, x_val = [data for data in xdata]
     y_train, y_test, y_val = [data for data in ydata]
     
     for i in [10, 100, 1000, 10000]:
         model, theta = accuracyResults(x_train, y_train, x_test, y_test, i)
-        printAccuracy(xdata, ydata, model, theta, i)
+        printAccuracy(xdata, ydata, model, theta, i, round_dec = round_dec)
 
-def resultsLogRegrL2(xdata, ydata):
+def resultsLogRegrL2(xdata, ydata, round_dec = None, iter = 100):
     """
     Creates results for Logistic Regression using L2 Regularization
+    (uses 100 iterations)
+    Args:
+        xdata     : static array containing x_train, x_test, x_val
+        ydata     : static array containing y_train, y_test, y_val
+        round_dec : number of decimals to round results to, in print
     """
     x_train, x_test, x_val = [data for data in xdata]
     y_train, y_test, y_val = [data for data in ydata]
@@ -166,20 +175,21 @@ def resultsLogRegrL2(xdata, ydata):
     lambda_accuracy = {}
 
     for _lambda in np.linspace(min_l, max_l, 100): # 100 different lambda values, from 1e-4 to 10
-        model, theta = accuracyResults(x_train, y_train, x_val, y_val, 100, _lambda) 
+        model, theta = accuracyResults(x_train, y_train, x_val, y_val, iter, _lambda) 
         p_val, prob_val = model.predict(theta, x_val)
-        lambda_accuracy[model._lambda] = accuracy(p_val.astype('int'), y_val)
-        print(f"Lambda value (accuracy {lambda_accuracy[_lambda]}%): {_lambda}") # TODO: remove
+        lambda_accuracy[_lambda] = accuracy(p_val.astype('int'), y_val, round_dec)
+        # print(f"Lambda value (accuracy {lambda_accuracy[_lambda]}%): {_lambda}") 
 
     best_lambda = max(lambda_accuracy, key=lambda_accuracy.get)
     print(f"Best lambda value (accuracy {lambda_accuracy[best_lambda]}%): {best_lambda}")
+    print("-"*10)
 
     # Test accuracy (on test set) using best lambda ----------------------
     print("[Testing accuracy on test set for 'best' lambda value...]")
 
-    model, theta = accuracyResults(x_train, y_train, x_test, y_test, 100, best_lambda)
+    model, theta = accuracyResults(x_train, y_train, x_test, y_test, iter, best_lambda)
     p_test, prob_test = model.predict(theta, x_test)
-    lambda_accuracy[model._lambda] = accuracy(p_test.astype('int'), y_test, 2)
+    lambda_accuracy[model._lambda] = accuracy(p_test.astype('int'), y_test, round_dec)
 
     print(f"Lambda value (accuracy {lambda_accuracy[best_lambda]}%): {best_lambda}")
 
