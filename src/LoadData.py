@@ -45,9 +45,9 @@ def filter_classes(x, y, classes=[5,6]):
     (by default, can be changed) 
     and remove the other classes. 
     Convert the label, y, to boolean: 
-        1 for 5 and 0 for 6. 
+        0 for 5 and 1 for 6. 
     """
-    keep = (y == classes[0]) | (y == classes[1])
+    keep = (y == classes[1]) | (y == classes[0])
     x, y = x[keep], y[keep]
-    y = y == classes[0]
+    y = y == classes[1]
     return x,y
