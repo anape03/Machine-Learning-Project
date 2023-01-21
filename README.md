@@ -83,7 +83,7 @@ For this value of the coefficient λ, evaluating the model on the control set (t
 
     We saved the parameters (*E*, *η*, *M*) of all models in order to examine the relationship between *Ε* (seasons), and *η* (learning rate).
 
-    ![image comparing epochs and learning rate for different sizes of the hidden layer](images\compare-epochs-learning-rate.png)
+    ![image comparing epochs and learning rate for different sizes of the hidden layer](images/compare-epochs-learning-rate.png)
 
     From the above diagram we can see that, with the exception of the first values ​​(with a small *M*) that terminate prematurely, as the learning rate (*η*) increases, the epochs (*E*) for which the model runs decrease. This is probably due to the fact that the model learns more easily, and therefore takes fewer epochs to achieve the corresponding cost.
 
