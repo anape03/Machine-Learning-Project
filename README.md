@@ -3,6 +3,17 @@
 The project was created as an assignment for the lesson *"Machine Learning"*.\
 The goal was to implement **2 Binary Classifiers**, in Python, and train/test them on a subset of the **MNIST** dataset.
 
+## Contents
+
+* [What was implemented](#What-was-implemented)
+    * [Part A (Pre-processing)](#Part-A-(Pre-processing))
+    * [Part B (Logistic Regression)](#Part-B-(Logistic-Regression))
+    * [Part C (Neural Network)](#Part-C-(Neural-Network))
+* [Results](#Results)
+    * [Part B (Logistic Regression)](#Part-B-(Logistic-Regression))
+    * [Part C (Neural Network)](#Part-C-(Neural-Network))
+
+
 # What was implemented:
 
 ## Part A (Pre-processing)
