@@ -6,12 +6,12 @@ The goal was to implement **2 Binary Classifiers**, in Python, and train/test th
 ## Contents
 
 * [What was implemented](#What-was-implemented)
-    * [Part A (Pre-processing)](#Part-A-(Pre-processing))
-    * [Part B (Logistic Regression)](#Part-B-(Logistic-Regression))
-    * [Part C (Neural Network)](#Part-C-(Neural-Network))
+    * [Part A (Pre-processing)](#Part-A-Pre-processing)
+    * [Part B (Logistic Regression)](#Part-B-Logistic-Regression)
+    * [Part C (Neural Network)](#Part-C-Neural-Network)
 * [Results](#Results)
-    * [Part B (Logistic Regression)](#Part-B-(Logistic-Regression))
-    * [Part C (Neural Network)](#Part-C-(Neural-Network))
+    * [Part B (Logistic Regression)](#Part-B-Logistic-Regression)
+    * [Part C (Neural Network)](#Part-C-Neural-Network)
 
 
 # What was implemented:
